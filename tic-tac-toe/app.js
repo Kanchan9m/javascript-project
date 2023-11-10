@@ -11,9 +11,9 @@ const winConditions = [
     [0, 4, 8],
     [2, 4, 6]
 ];
-let options = ["", "", "", "", "", "", "", "", ""];
-let currentPlayer = "X";
-let running = false;
+let options;
+let currentPlayer;
+let running;
 
 initialize();
 
@@ -22,6 +22,7 @@ function initialize(){
     restart.addEventListener("click", restartGame);
     statusText.textContent = `${currentPlayer}'s turn`;
     running = true;
+    restartGame();
 }
 function cellClicked(){
     const cellIndex = this.getAttribute("cellIndex");
@@ -71,7 +72,7 @@ function checkWinner(){
 function restartGame(){
     currentPlayer = "X";
     options = ["", "", "", "", "", "", "", "", ""];
-    statusText.textContent = `${changePlayer}'s turn`; 
+    statusText.textContent = `${currentPlayer}'s turn`; 
     cells.forEach(cell => cell.textContent = "");
     running = true;
 }
